@@ -5,7 +5,7 @@ const coinLabel = document.getElementById("receivedCoin");
 const productLabel = document.getElementById("receivedProduct");
 
 let displayText = "";
-let result = "";
+let result = 0;
 let intervalId;
 let selectedProduct = "";
 let productPrice = "";
@@ -20,6 +20,7 @@ const coinsDropped = {
   10: 0,
   5: 0,
 };
+const sortedKeys = Object.keys(coinsDropped).sort((a, b) => b - a);
 
 const machineInventory = {
   products: [
@@ -173,34 +174,19 @@ const decreasePriceOnDisplay = function (price, num) {
 
 // NE a display-ből fejtsem vissza hanem Object-ből - selectedProduct
 
-function check(moneyBack, coin) {
+function coinDroppedObjectFiller(moneyBack, coin) {
+  console.log(moneyBack, coin);
   // Loop until there is inventory from that coin
   // and moneyback is greater than the coin
   while (moneyBack >= coin && machineInventory.change[coin] > 0) {
     // if the coin met the conditions, remove the coin's value from the moneyback value
-
     moneyBack -= coin;
-
-    // Add the coin to the "coinsDropped" object
+    // ADD the coin to the "coinsDropped" object
     logCoinDropped(coin);
-    // Remove the coin to the Machine Inventory object
+    // REMOVE the coin from the "logCoinToMachineInventory" object
     logCoinToMachineInventory(-1 * coin);
   }
-  return moneyBack;
-}
-
-function timedOutMoneyReturn(moneyBack, coin) {
-  // Loop until there is inventory from that coin
-  // and moneyback is greater than the coin
-  while (moneyBack >= coin && machineInventory.change[coin] > 0) {
-    // if the coin met the conditions, remove the coin's value from the moneyback value
-    moneyBack -= coin;
-
-    // Add the coin to the "coinsDropped" object
-    logCoinDropped(-1 * coin);
-    // Remove the coin to the Machine Inventory object
-    logCoinToMachineInventory(coin);
-  }
+  console.log(coinsDropped);
   return moneyBack;
 }
 
@@ -225,6 +211,8 @@ function moneyInserted(coinAdded) {
     // IF the money that needs to be paid is MORE than the coin
     // Just accepts it and reduce the vakue that needs to be paid
     if (productPrice >= coinAdded) {
+      // save in a memory how much coin has been added so far. So if wwe need to give back, we can read out from it
+      result += coinAdded;
       // decrease the price left to be payed
       productPrice -= coinAdded;
       // decrease the price on the display
@@ -237,11 +225,9 @@ function moneyInserted(coinAdded) {
 
       let moneyBack = coinAdded - productPrice;
       // Loop thru the possible coins, and call the check function
-      const keys = Object.keys(coinsDropped).sort((a, b) => b - a);
-      keys.sort((a, b) => b - a);
 
-      for (const key of keys) {
-        moneyBack = check(moneyBack, key);
+      for (const key of sortedKeys) {
+        moneyBack = coinDroppedObjectFiller(moneyBack, key);
       }
 
       // If everything was successful, the moneyBack value should be 0
@@ -266,12 +252,18 @@ function moneyInserted(coinAdded) {
       } else {
         // Print out to the display "SOLD OUT"
         writeOutText("SOLD OUT");
+        // Forget prev selection
+        rememberSelectedProduct(0);
+        // Erase info from labels
+        erase();
 
+        // Populate the memory object with the money already payed for the product
+        for (const key of sortedKeys) {
+          result = coinDroppedObjectFiller(result, key);
+        }
         // Not enough coins in the vending machine, need to give back the money
         // Should give back what it is in the coinsDropped
         giveBackCoins(coinsDropped);
-        // Forget prev selection
-        rememberSelectedProduct(0);
       }
     }
   } else {
@@ -291,6 +283,7 @@ const giveBackCoins = function (objectName) {
     coinsDropped[coin] = 0;
   }
   coinLabel.innerHTML = displayText;
+  result = 0;
 };
 
 const giveOutProduct = function (productName) {
@@ -299,6 +292,19 @@ const giveOutProduct = function (productName) {
   productLabel.innerHTML = displayText;
   coinLabel.innerHTML = displayText;
 };
+
+function del() {
+  console.log(coinsDropped, result);
+  // Forget prev selection
+  rememberSelectedProduct(0);
+  erase();
+  for (const key of sortedKeys) {
+    result = coinDroppedObjectFiller(result, key, "return");
+  }
+  // Not enough coins in the vending machine, need to give back the money
+  // Should give back what it is in the coinsDropped
+  giveBackCoins(coinsDropped);
+}
 
 function erase() {
   display.value = "";
