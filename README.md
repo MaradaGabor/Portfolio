@@ -4,7 +4,7 @@ Gábor Marada's portfolio page
 I mainly programmed in HTML/CSS/JS so far, but I have plans for the future.<br />
 I started to learn about Node.JS & React.<br />
 
-I didn't feel the need to copy here the tutorials I finished based on Udemy courses. I just provide below these repositories:<br />
+I finished the following Udemy courses:<br />
 
 Title: The Complete JavaScript Course 2023: From Zero to Expert!<br />
 Length: 69 hours on-demand video<br />
