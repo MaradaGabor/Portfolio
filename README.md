@@ -29,7 +29,6 @@ Goal: <br />
   <br />
   STATUS: IN-PROGRESS (so far, the techs are selected & the static content is created)<br />
   https://naval-nonsense.vercel.app/
-  > > > > > > > 550749201250fd5167ea4333edf564d3f91139dc
 
 ## BOT-Anika
 
