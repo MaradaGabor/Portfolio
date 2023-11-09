@@ -1,4 +1,5 @@
 # Portfolio
+
 Gábor Marada's portfolio page
 
 I mainly programmed in HTML/CSS/JS so far, but I have plans for the future.<br />
@@ -16,9 +17,7 @@ Length: 37.5 hours on-demand video<br />
 Link: https://www.udemy.com/course/design-and-develop-a-killer-website-with-html5-and-css3/<br />
 Programs: https://github.com/jonasschmedtmann/html-css-course<br />
 
-
 My projects are the following:<br />
-
 
 HTML/CSS/JS(vanilla)<br />
 
