@@ -7,7 +7,7 @@ A custom card calculator program, with a flexible table.<br />
 Goal: <br />
 
 - Gather and combine all the skills I have learnt so far (Firebase auth, Firestore, other custom depedency etc.)<br />
-- Practise how to make a mobile app's GUI<br />
+- Experiment how to make a mobile app's GUI<br />
   <br />
   STATUS: FINISHED<br />
   https://play.google.com/store/apps/details?id=app.vercel.total_points.twa<br />
@@ -20,7 +20,7 @@ A round based webgame. This is my very first bigger dream project.<br />
 Goal: <br />
 
 - Create a webgame and learn the necessary skills to do it<br />
-- Practise the current limits for AI supported tools (picture AI, sound AI etc.)<br />
+- Examine the current limits for AI supported tools (picture AI, sound AI etc.)<br />
 - Have fun while doing it and make an amazing game :)<br />
   <br />
   STATUS: IN-PROGRESS<br />
