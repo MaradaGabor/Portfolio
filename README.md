@@ -1,10 +1,5 @@
 # Portfolio
 
-I mainly programmed in HTML/CSS/JS so far, but I have plans for the future.<br />
-I started to learn about Node.JS & Sveltekit.<br />
-
-My projects are the following:<br />
-
 ## Total-Points
 
 A custom card calculator program, with a flexible table.<br />
@@ -15,6 +10,7 @@ Goal: <br />
 - Practise how to make a mobile app's GUI<br />
   <br />
   STATUS: FINISHED<br />
+  https://play.google.com/store/apps/details?id=app.vercel.total_points.twa<br />
   https://total-points.vercel.app/
 
 ## Naval Nonsense
@@ -27,7 +23,7 @@ Goal: <br />
 - Practise the current limits for AI supported tools (picture AI, sound AI etc.)<br />
 - Have fun while doing it and make an amazing game :)<br />
   <br />
-  STATUS: IN-PROGRESS (so far, the techs are selected & the static content is created)<br />
+  STATUS: IN-PROGRESS<br />
   https://naval-nonsense.vercel.app/
 
 ## BOT-Anika
